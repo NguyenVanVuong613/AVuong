@@ -18,7 +18,7 @@ setuptools.setup(
     author="Piotr Skalski",
     author_email="piotr.skalski92@gmail.com",
     license='MIT',
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(include=["sports", "sports.*"]),
     include_package_data=True,
     install_requires=[
         "supervision",
