@@ -8,7 +8,7 @@ HERE = pathlib.Path(__file__).parent
 README = (HERE / "README.md").read_text(encoding="utf-8")
 
 setuptools.setup(
-    name="AVuong",
+    name="avuong",
     version='0.1.0',
     python_requires=">=3.8",
     description="",
@@ -18,7 +18,7 @@ setuptools.setup(
     author="Piotr Skalski",
     author_email="piotr.skalski92@gmail.com",
     license='MIT',
-    packages=setuptools.find_packages(include=["sports", "sports.*"]),
+    packages=setuptools.find_packages(),
     include_package_data=True,
     install_requires=[
         "supervision",
