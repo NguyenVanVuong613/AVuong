@@ -14,7 +14,7 @@ setuptools.setup(
     description="",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/roboflow/sports",
+    url="https://github.com/NguyenVanVuong613/AVuong",
     author="Piotr Skalski",
     author_email="piotr.skalski92@gmail.com",
     license='MIT',
