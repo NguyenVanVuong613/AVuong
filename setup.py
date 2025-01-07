@@ -36,6 +36,9 @@ setuptools.setup(
             'pytest',
         ]
     },
+    package_data={
+        '': ['images/*', 'images/**/*'],  # This will include all files in the 'images' folder
+    },
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
