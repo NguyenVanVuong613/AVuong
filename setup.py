@@ -37,7 +37,7 @@ setuptools.setup(
         ]
     },
     package_data={
-        '': ['images/*', 'images/**/*'],  # This will include all files in the 'images' folder
+        'avuong': ['images/*', 'images/**/*'],  # Include the images folder inside the avuong package
     },
     classifiers=[
         'Development Status :: 4 - Beta',
