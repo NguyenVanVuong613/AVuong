@@ -724,21 +724,88 @@ def render_radar(SOURCE_VIDEO_PATH, confidence_threshold=0.3, st_progress_bar=No
 
 
 def show_introduction():
-    st.title("⚽ Ứng dụng nhận diện, theo dõi và phân tích Bóng đá")
-    st.markdown("""
-    Chào mừng đến với **Ứng dụng nhận diện, theo dõi và phân tích Bóng đá !**
-    Ứng dụng này cho phép bạn tải lên một video trận đấu bóng đá và phát hiện các cầu thủ trong các khung hình bằng AI.
+    file_1 = open("Images/Team lineup.gif", "rb")
+    contents_1 = file_1.read()
+    data_url_1 = base64.b64encode(contents_1).decode("utf-8")
+    file_1.close()
 
-    **Các tính năng chính**:
-    - Tải lên video bóng đá ở định dạng MP4, MOV hoặc AVI..
-    - Phát hiện và chú thích các cầu thủ trong các khung hình.
-    - Tải xuống video đã xử lý với chú thích cầu thủ.
+    left_col_1, right_col_1 = st.columns(2)
 
-    **Cách sử dụng**:
-    1. Tải lên một video trận đấu bóng đá.
-    2. Nhấp vào 'Phát hiện cầu thủ' để chạy mô hình AI.
-    3. Tải xuống video đã xử lý với chú thích.
-    """)
+    with left_col_1:
+        st.markdown("# ")
+        st.markdown(
+            "### ⚽ Ứng dụng nhận diện, theo dõi và phân tích Bóng đá"
+        )
+        st.markdown('<hr style="border:1px solid #125d70">', unsafe_allow_html=True)
+        st.markdown(
+            f'<p style="background-color:#FBFBFB;color:black;font-size:23px;border-radius:2%;text-align:center;"><strong>Giới thiệu</strong></p>',
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+    '''
+    <div style="text-align: justify;"> 
+        Chào mừng đến với **Ứng dụng nhận diện, theo dõi và phân tích Bóng đá !**
+        Ứng dụng này cho phép bạn tải lên một video trận đấu bóng đá và phát hiện các cầu thủ trong các khung hình bằng AI.
+
+        Các tính năng chính:
+        - Tải lên video bóng đá ở định dạng MP4, MOV hoặc AVI.
+        - Phát hiện và chú thích các cầu thủ trong các khung hình.
+        - Tải xuống video đã xử lý với chú thích cầu thủ.
+
+    </div>
+    ''',
+    unsafe_allow_html=True,
+)
+
+    with right_col_1:
+        st.markdown(
+            '<div style="text-align: center;">'
+            f'<img src="data:image/gif;base64,{data_url_1}" alt="soccer gif">'
+            "</div>",
+            unsafe_allow_html=True,
+        )
+
+    st.markdown('<hr style="border:1px solid #125d70">', unsafe_allow_html=True)
+
+    left_col_2, right_col_2 = st.columns(2)
+
+    # Se der tempo colocar análise da base de dados
+    with left_col_2:
+        st.markdown(
+            f'<p style="background-color:#FBFBFB;color:black;font-size:40px;border-radius:2%;text-align:center;"><strong>Cách sử dụng</strong></p>',
+            unsafe_allow_html=True,
+        )
+
+        st.markdown(
+           '<div style="text-align: justify;font-size:30px;">  <strong>1. Tải lên một video trận đấu bóng đá.</strong>  </div>',
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+            '<div style="text-align: justify;font-size:30px;">  <strong>2. Nhấp vào Phát hiện cầu thủ để chạy mô hình AI.</strong>  </div>',
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+            '<div style="text-align: justify;font-size:30px;">  <strong>3. Tải xuống video đã xử lý với chú thích.</strong>   </div>',
+            unsafe_allow_html=True,
+        )
+        
+    with right_col_2:
+        st.markdown(
+            f'<p style="background-color:#FBFBFB;color:#FBFBFB;font-size:34px;border-radius:2%;text-align:center;"><strong>Giới thiệu</strong></p>',
+            unsafe_allow_html=True,
+        )
+        file_2 = open("Images/Soccer.gif", "rb")
+        contents_2 = file_2.read()
+        data_url_2 = base64.b64encode(contents_2).decode("utf-8")
+        file_2.close()
+        st.markdown(
+            '<div style="text-align: center;">'
+            f'<img src="data:image/gif;base64,{data_url_2}" alt="soccer gif">'
+            "</div>",
+            unsafe_allow_html=True,
+        )
+
+    left_col_3, right_col_3 = st.columns(2)
 
 def show_player_detection_page():
     st.title("🎥 Khởi chạy mô hình nhận diện")
@@ -871,7 +938,26 @@ def show_player_detection_page():
 
 def show_maps():
     st.title("📊 Biểu đồ")
-    st.markdown("""Các thông số hiện không khả dụng, hãy chạy mô hình nhận diện trước.""")
+    st.markdown('<hr style="border:2px solid #125d70">', unsafe_allow_html=True)
+    st.markdown(
+        f'<p style="background-color:#FBFBFB;color:black;font-size:23px;border-radius:2%;text-align:center;"><strong>Thống kê chung</strong></p>',
+        unsafe_allow_html=True,
+    )
+
+    card_1, card_2, card_3, card_4, card_5, card_6, card_7, card_8, card_9 = st.columns(9)
+
+    card_1.metric("Team 1 Possession:", value=team1_possession)
+    card_2.metric("Team 2 Possession", value=team2_possession)
+    card_3.metric("Team 1 Field Coverage:", value=analytics['team1_coverage'])
+    card_4.metric("Team 2 Field Coverage", value=analytics['team2_coverage'])
+    card_5.metric("Ball Coverage", value=analytics['ball_coverage'])
+    card_6.metric("Average Ball Speed", value=analytics['avg_ball_speed'])
+    card_7.metric("Total Pressure Events", value=analytics['pressure_events_count'])
+    card_8.metric("Team 1 Avg Formation Width", value=analytics['team1_avg_width'])
+    card_9.metric("Team 2 Avg Formation Width", value=analytics['team2_avg_width'])
+
+
+
 
 def show_page_4():
     # Add custom CSS styling
